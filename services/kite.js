@@ -10,13 +10,17 @@ const getAccessToken = (request_token) => {
       .then(function (response) {
         console.log(response);
         kc.setAccessToken(response.access_token);
-        resolve({ status: "success", 'accessToken': response.access_token });
+        resolve({ status: "success", accessToken: response.access_token });
       })
       .catch(function (err) {
         console.log(err);
         reject({ status: "error" });
       });
   });
+};
+
+const getPositions = async () => {
+  return await kc.getPositions();
 };
 
 const placeOrder = (variety, params) => {
@@ -26,4 +30,5 @@ const placeOrder = (variety, params) => {
 module.exports = {
   getAccessToken,
   placeOrder,
+  getPositions
 };
