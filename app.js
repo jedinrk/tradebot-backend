@@ -1,12 +1,11 @@
 const express = require("express");
-const Websocket = require("ws");
 
 const createError = require("http-errors");
 const dotenv = require("dotenv").config();
 
 const app = express();
-const server = require("http").createServer(app);
-const wss = new Websocket.Server({ port: 8080 });
+//const server = require("http").createServer(app);
+//const wss = new Websocket.Server({ port: 8080 });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,20 +13,14 @@ app.use(express.urlencoded({ extended: true }));
 // Initialize DB
 require("./initDB")();
 
-wss.on("connection", function connection(ws) {
-  console.log("A new client message");
-  ws.on("error", console.error);
+//const wsService = new WebSocketService(server);
 
-  ws.send(`{ "message" : "Welcome !!!" }`);
-
-  ws.on("message", function message(data) {
-    console.log("received: %s", data);
-    ws.send(`{ "message" : "Got message" }`);
-  });
-});
+const WebSocketService = require('./services/websocketService');
 
 const ProductRoute = require("./Routes/Product.route");
+const AuthRoute = require("./Routes/auth.route");
 app.use("/products", ProductRoute);
+app.use("/api/auth", AuthRoute);
 
 //404 handler and pass to error handler
 app.use((req, res, next) => {
@@ -56,3 +49,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server started on port " + PORT + "...");
 });
+

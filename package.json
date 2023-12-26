@@ -13,6 +13,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-errors": "^1.7.3",
+    "kiteconnect": "^4.1.0",
     "mongoose": "^5.7.13",
     "ws": "^8.15.1"
   },
