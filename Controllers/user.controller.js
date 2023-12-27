@@ -11,8 +11,9 @@ module.exports = {
     } catch (error) {
       // Handle errors
       console.error("Error:", error);
-      // Forward the error to the error handling middleware or next()
-      next(error);
+      
+      res.send({ status: "error" });
+      //next(error); Forward the error to the error handling middleware or next()
     }
   },
 };

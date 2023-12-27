@@ -2,13 +2,32 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  name: {
+  user_type: String,
+  email: {
     type: String,
-    required: true,
+    index: true,
+    unique: true,
   },
-  accessToken: {
+  user_name: String,
+  user_shortname: String,
+  broker: String,
+  exchanges: [String],
+  products: [String],
+  order_types: [String],
+  avatar_url: String,
+  user_id: {
     type: String,
-    required: true,
+    index: true,
+    unique: true,
+  },
+  api_key: String,
+  access_token: String,
+  public_token: String,
+  refresh_token: String,
+  enctoken: String,
+  login_time: Date,
+  meta: {
+    demat_consent: String,
   },
 });
 

@@ -8,9 +8,12 @@ const getAccessToken = (request_token) => {
   return new Promise((resolve, reject) => {
     kc.generateSession(request_token, process.env.API_SECRET)
       .then(function (response) {
-        console.log(response);
         kc.setAccessToken(response.access_token);
-        resolve({ status: "success", accessToken: response.access_token });
+        resolve({
+          status: "success",
+          accessToken: response.access_token,
+          userData: response,
+        });
       })
       .catch(function (err) {
         console.log(err);
@@ -30,5 +33,5 @@ const placeOrder = (variety, params) => {
 module.exports = {
   getAccessToken,
   placeOrder,
-  getPositions
+  getPositions,
 };
