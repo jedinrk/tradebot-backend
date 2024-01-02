@@ -4,7 +4,7 @@ const kite = require("../services/kite");
 
 const User = require("../Models/user.model");
 
-const { broadcastMessage } = require("../app");
+const app = require("../app");
 
 module.exports = {
   redirectUrl: async (req, res, next) => {
@@ -32,7 +32,7 @@ module.exports = {
               status,
               accessToken,
             });
-            broadcastMessage(message);
+            app.broadcastMessage(message);
           })
           .catch((error) => {
             console.error("Error retrieving access token:", error); // This will log { status: 'error' } if there's an error
