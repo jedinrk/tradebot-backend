@@ -4,7 +4,7 @@ const kite = require("../services/kite");
 
 const User = require("../Models/user.model");
 
-const { broadcastMessage } = require("../app"); // Double-check the path to app.js
+const { broadcastMessage } = require("../websocketService"); // Import the broadcastMessage function
 
 module.exports = {
   redirectUrl: async (req, res, next) => {
