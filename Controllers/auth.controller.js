@@ -32,7 +32,7 @@ module.exports = {
               status,
               accessToken,
             });
-            wsService.broadcastMessage(message);
+            broadcastMessage(message);
           })
           .catch((error) => {
             console.error("Error retrieving access token:", error); // This will log { status: 'error' } if there's an error
