@@ -4,7 +4,7 @@ const kite = require("../services/kite");
 
 const User = require("../Models/user.model");
 
-const wsService = require("../services/websocketService");
+const { broadcastMessage } = require("../app");
 
 module.exports = {
   redirectUrl: async (req, res, next) => {
