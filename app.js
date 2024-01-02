@@ -74,4 +74,4 @@ function broadcastMessage(message) {
   });
 }
 
-module.exports = { broadcastMessage };
+module.exports.broadcastMessage = broadcastMessage; // Export the broadcastMessage function
